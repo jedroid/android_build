@@ -1325,10 +1325,13 @@ function pez {
 
 function jedroid()
 {
-    cd $ANDROID_PRODUCT_OUT
-	mkdir jedroidimage/
-	cp -fr root/* jedroidimage/
-	cp -fr system/ jedroidimage/
+	cd $ANDROID_PRODUCT_OUT
+	mkdir -p jedroid/sdimage
+	mkdir jedroid/bootloader
+	cp -fr root/* jedroid/sdimage
+	cp -fr system/ jedroid/sdimage
+	cp -fr bootloader jedroid
+	cp flash.sh jedroid
 	cd -
 }
 
