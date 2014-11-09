@@ -1335,6 +1335,17 @@ function jedroid()
 	cd -
 }
 
+function release_jedroid()
+{
+	cd $(gettop)/device/nvidia/jedroid
+	RELEASE=$(git describe --abbrev=0 --tags)
+	cd -
+	cd $ANDROID_PRODUCT_OUT
+	tar jcvf jedroid_$RELEASE.tar.bz2 jedroid
+	md5sum jedroid_$RELEASE.tar.bz2 > jedroid_$RELEASE.tar.bz2_md5sum
+	cd -
+}
+
 if [ "x$SHELL" != "x/bin/bash" ]; then
     case `ps -o command -p $$` in
         *bash*)
